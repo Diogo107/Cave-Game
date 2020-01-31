@@ -5,9 +5,21 @@
     <meta name="viewport" content="width=device-width" />
     <title>repl.it</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   </head>
   <body>
-    <canvas width="450" height="450"></canvas>
+    <h1 class="font">Cave Game</h1>
+    <div class="game">
+      <div>
+        <canvas width="450" height="450"></canvas>
+        <div class="game">
+          <button class="btn btn-lg btn-primary" id="star-button">Start</button class="btn btn-lg btn-primary">
+          <button class="btn btn-lg btn-primary" id="star-button">Reset</button>
+          <button class="btn btn-lg btn-primary" id="star-button">Pause</button>
+        </div>
+      </div>
+    </div>
+
     <script src="scripts/controls.js"></script>
     <script src="scripts/score.js"></script>
     <script src="scripts/obstacles.js"></script>

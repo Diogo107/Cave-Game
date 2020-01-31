@@ -1,10 +1,10 @@
-/*var playerWidth = context.canvas.width / 10;
-var playerHeight = context.canvas.width / 10;*/
-
 class Player {
   constructor(game) {
+    this.playerWidth = 45;
+    this.playerHeight = 45;
     this.positionX = 0;
     this.positionY = 0;
+    this.game = game;
   }
 
   moveUp() {
@@ -15,16 +15,23 @@ class Player {
   }
   moveDown() {
     this.positionY++;
-    drawPlayer();
+    this.drawPlayer();
   }
   moveLeft() {
     this.positionX--;
   }
-}
 
-function drawPlayer() {
-  const imageUrl = '/projects/Cave-Game/images/Knight/knight.png';
-  const playerImg = new Image();
-  playerImg.src = imageUrl;
-  context.drawImage(playerImg, player.positionX, player.positionY, screen.width, screen.height);
+  drawPlayer() {
+    const imageUrl = '/projects/Cave-Game/images/Rogue/rogue.png';
+    const playerImg = new Image();
+    playerImg.src = imageUrl;
+    console.log(this.game);
+    this.game.context.drawImage(
+      playerImg,
+      this.positionX,
+      this.positionY,
+      this.playerWidth,
+      this.playerHeight
+    );
+  }
 }
