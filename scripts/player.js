@@ -9,16 +9,20 @@ class Player {
 
   moveUp() {
     this.positionY--;
+    this.drawPlayer();
   }
   moveRight() {
     this.positionX++;
+    this.drawPlayer();
   }
   moveDown() {
     this.positionY++;
+    this.drawPlayer();
     //console.log(this.positionX + ' ' + this.positionY);
   }
   moveLeft() {
     this.positionX--;
+    this.drawPlayer();
   }
 
   drawPlayer() {

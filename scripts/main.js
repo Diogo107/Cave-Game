@@ -14,12 +14,10 @@ console.log(game.player.playerHeight);
 console.log(game.map.table);
 window.onload = function() {
   game.drawEverything();
-  game.player.moveDown();
 };
-
-game.drawEverything();
+game.player.drawPlayer();
 
 console.log(game.player);
-setTimeout(() => {
-  game.player.moveDown();
-}, 300 / this.speed);
+// setTimeout(() => {
+//   game.player.moveDown();
+// }, 300 / this.speed);
