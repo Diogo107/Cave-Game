@@ -1,7 +1,7 @@
 class Player {
   constructor(game) {
-    this.playerWidth = 45;
-    this.playerHeight = 45;
+    this.playerWidth = 50;
+    this.playerHeight = 50;
     this.positionX = 0;
     this.positionY = 0;
     this.game = game;
@@ -15,7 +15,7 @@ class Player {
   }
   moveDown() {
     this.positionY++;
-    this.drawPlayer();
+    //console.log(this.positionX + ' ' + this.positionY);
   }
   moveLeft() {
     this.positionX--;
@@ -28,8 +28,8 @@ class Player {
     console.log(this.game);
     this.game.context.drawImage(
       playerImg,
-      this.positionX,
-      this.positionY,
+      this.positionX * 45,
+      this.positionY * 45,
       this.playerWidth,
       this.playerHeight
     );

@@ -64,7 +64,6 @@ class Map {
 
   randomTable(array) {
     for (let i = 0; i < array.length; i++) {
-      var firstArray = [];
       for (let x = 0; x < array[i].length; x++) {
         if (array[i][x] === '1') {
           array[i][x] = 'x';
@@ -72,13 +71,13 @@ class Map {
           array[i][x] = this.randomBlackWhite();
         }
 
-        //console.log(array[i][x])
+        //console.log(array[i][x]);
       }
       //console.log(i)
     }
   }
 
-  // console.log(tableSize)
+  //console.log(tableSize)
 
   paint(table) {
     const context = this.game.context;
@@ -102,7 +101,7 @@ class Map {
         // context.fillRect(i * tile.width[x], i * tile.height[x], (i+1)*tile.width[x], (x+1)*tile.height[x]);
       }
     }
-    context.fillStyle = 'black';
+    context.fillStyle = '#FC4A1A';
     context.fillRect(0, 0, 3, context.canvas.height);
     context.fillRect(0, 0, context.canvas.width, 3);
     context.fillRect(context.canvas.width - 3, 0, context.canvas.width, context.canvas.height);

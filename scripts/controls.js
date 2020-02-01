@@ -5,20 +5,28 @@ window.addEventListener('keydown', event => {
   // React based on the key pressed
   switch (event.keyCode) {
     case 37:
-      player.moveLeft();
-      console.log(player);
+      game.player.moveLeft();
+      console.log(game.player);
+      //game.map.paint();
+      //game.player.drawPlayer();
       break;
     case 38:
-      player.moveUp();
-      console.log(player);
+      game.player.moveUp();
+      console.log(game.player);
+      //game.map.paint();
+      //game.player.drawPlayer();
       break;
     case 39:
-      player.moveRight();
-      console.log(player);
+      game.player.moveRight();
+      console.log(game.player);
+      //game.map.paint();
+      //game.player.drawPlayer();
       break;
     case 40:
-      player.moveDown();
-      console.log(player);
+      game.player.moveDown();
+      console.log(game.player);
+      //game.map.paint();
+      //game.player.drawPlayer();
       break;
   }
 });
