@@ -4,6 +4,7 @@ class Game {
     this.context = $canvas.getContext('2d');
     this.player = new Player(this);
     this.zombie = new Zombie(this);
+    //    this.zombie2 = new Zombie(this);
     this.map = new Map(this);
   }
 
@@ -14,3 +15,5 @@ class Game {
     this.zombie.drawZombie();
   }
 }
+
+//Check Colision
