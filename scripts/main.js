@@ -15,6 +15,7 @@ console.log(game.map.table);
 window.onload = function() {
   game.drawEverything();
 };
+game.map.randomTable(table);
 game.player.drawPlayer();
 
 console.log(game.player);

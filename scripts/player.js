@@ -8,28 +8,47 @@ class Player {
   }
 
   moveUp() {
-    this.positionY--;
-    this.drawPlayer();
+    console.log(table);
+    if (this.positionY - 1 < 0) {
+    } else if (table[this.positionY - 1][this.positionX] == 'b') {
+    } else {
+      this.positionY--;
+      game.map.paintEverything();
+    }
   }
   moveRight() {
-    this.positionX++;
-    this.drawPlayer();
+    if (this.positionX + 1 > 9) {
+    } else if (table[this.positionY][this.positionX + 1] == 'b') {
+    } else {
+      this.positionX++;
+      game.map.paintEverything();
+    }
+    console.log(table[this.positionY][this.positionX]);
   }
   moveDown() {
-    this.positionY++;
-    this.drawPlayer();
+    if (this.positionY + 1 > 9) {
+    } else if (table[this.positionY + 1][this.positionX] == 'b') {
+    } else {
+      this.positionY++;
+      game.map.paintEverything();
+    }
+
     //console.log(this.positionX + ' ' + this.positionY);
   }
   moveLeft() {
-    this.positionX--;
-    this.drawPlayer();
+    if (this.positionX - 1 < 0) {
+    } else if (table[this.positionY][this.positionX - 1] == 'b') {
+    } else {
+      this.positionX--;
+      game.map.paintEverything();
+    }
   }
 
   drawPlayer() {
-    const imageUrl = '/projects/Cave-Game/images/Rogue/rogue.png';
+    const imageUrl = './images/Rogue/rogue.png';
     const playerImg = new Image();
     playerImg.src = imageUrl;
-    console.log(this.game);
+    //console.log(this.game);
     this.game.context.drawImage(
       playerImg,
       this.positionX * 45,

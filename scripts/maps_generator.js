@@ -75,6 +75,7 @@ class Map {
       }
       //console.log(i)
     }
+    var table = array;
   }
 
   //console.log(tableSize)
@@ -111,7 +112,9 @@ class Map {
   paintEverything() {
     const context = this.game.context;
     context.clearRect(0, 0, context.canvas.width, context.canvas.height);
-    this.randomTable(table);
+    //    this.randomTable(table);
     this.paint(table);
   }
+
+  seeingRadius() {}
 }
