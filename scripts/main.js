@@ -22,6 +22,8 @@ function start() {
 function reset() {
   game.player.positionX = 0;
   game.player.positionY = 0;
+  game.zombie.positionX = 9;
+  game.zombie.positionY = 9;
   game.map.randomTable(table);
   game.player.drawPlayer();
   game.map.seeingRadius();
@@ -46,6 +48,7 @@ function loop() {
       ) {
         gameRunning = false;
         console.log('Ups');
+        reset();
       }
       loop();
     }, gameSpeed * 1000);

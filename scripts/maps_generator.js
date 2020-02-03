@@ -52,6 +52,7 @@ var tableDefault = [
   ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
 ];
 
+var table1 = [];
 var tableSize = table.length;
 
 class Map {
@@ -92,12 +93,12 @@ class Map {
       }
       //console.log(i)
     }
-    var table = array;
+    var table1 = array;
   }
 
   //console.log(tableSize)
 
-  paint(table) {
+  paint(table1) {
     const context = this.game.context;
     for (let y = 0; y < tableSize; y++) {
       for (let x = 0; x < tableSize; x++) {
@@ -130,7 +131,7 @@ class Map {
     const context = this.game.context;
     context.clearRect(0, 0, context.canvas.width, context.canvas.height);
     //    this.randomTable(table);
-    this.paint(table);
+    this.paint(table1);
     //console.log(game.player.positionY);
     //console.log(table[game.player.positionY][game.player.positionX]);
   }
