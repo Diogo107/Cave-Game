@@ -49,7 +49,7 @@ class Map {
       height: this.tileHeight
     };
 
-    console.log(table);
+    //console.log(table);
   }
 
   randomBlackWhite() {
@@ -85,7 +85,7 @@ class Map {
     for (let y = 0; y < tableSize; y++) {
       for (let x = 0; x < tableSize; x++) {
         if (table[y][x] == 'b') {
-          context.fillStyle = 'black';
+          context.fillStyle = '#532b24';
         } else {
           context.fillStyle = 'white';
         }
@@ -102,7 +102,7 @@ class Map {
         // context.fillRect(i * tile.width[x], i * tile.height[x], (i+1)*tile.width[x], (x+1)*tile.height[x]);
       }
     }
-    context.fillStyle = '#FC4A1A';
+    context.fillStyle = 'black';
     context.fillRect(0, 0, 3, context.canvas.height);
     context.fillRect(0, 0, context.canvas.width, 3);
     context.fillRect(context.canvas.width - 3, 0, context.canvas.width, context.canvas.height);
@@ -114,7 +114,39 @@ class Map {
     context.clearRect(0, 0, context.canvas.width, context.canvas.height);
     //    this.randomTable(table);
     this.paint(table);
+    //console.log(game.player.positionY);
+    //console.log(table[game.player.positionY][game.player.positionX]);
   }
 
-  seeingRadius() {}
+  seeingRadius() {
+    const context = this.game.context;
+    for (let y = 0; y < tableSize; y++) {
+      for (let x = 0; x < tableSize; x++) {
+        if (
+          (y === game.player.positionY && x === game.player.positionX) ||
+          (y === game.player.positionY && x === game.player.positionX - 1) ||
+          (y === game.player.positionY && x === game.player.positionX - 2) ||
+          (y === game.player.positionY && x === game.player.positionX + 1) ||
+          (y === game.player.positionY && x === game.player.positionX + 2) ||
+          (y - 1 === game.player.positionY && x === game.player.positionX + 1) ||
+          (y - 1 === game.player.positionY && x === game.player.positionX - 1) ||
+          (y + 1 === game.player.positionY && x === game.player.positionX + 1) ||
+          (y + 1 === game.player.positionY && x === game.player.positionX - 1) ||
+          (y - 1 === game.player.positionY && x === game.player.positionX) ||
+          (y + 1 === game.player.positionY && x === game.player.positionX) ||
+          (y - 2 === game.player.positionY && x === game.player.positionX) ||
+          (y + 2 === game.player.positionY && x === game.player.positionX)
+        ) {
+        } else {
+          context.fillStyle = 'black';
+          context.fillRect(
+            x * this.tileWidth,
+            y * this.tile.height,
+            this.tile.width,
+            this.tile.height
+          );
+        }
+      }
+    }
+  }
 }

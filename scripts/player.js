@@ -8,12 +8,14 @@ class Player {
   }
 
   moveUp() {
-    console.log(table);
+    //console.log(table);
     if (this.positionY - 1 < 0) {
     } else if (table[this.positionY - 1][this.positionX] == 'b') {
     } else {
       this.positionY--;
       game.map.paintEverything();
+      game.zombie.drawZombie();
+      game.map.seeingRadius();
     }
   }
   moveRight() {
@@ -22,8 +24,12 @@ class Player {
     } else {
       this.positionX++;
       game.map.paintEverything();
+      game.zombie.drawZombie();
+      game.map.seeingRadius();
+
+      //seeingRadius();
     }
-    console.log(table[this.positionY][this.positionX]);
+    //console.log(table[this.positionY][this.positionX]);
   }
   moveDown() {
     if (this.positionY + 1 > 9) {
@@ -31,6 +37,9 @@ class Player {
     } else {
       this.positionY++;
       game.map.paintEverything();
+      game.zombie.drawZombie();
+      game.map.seeingRadius();
+      //seeingRadius();
     }
 
     //console.log(this.positionX + ' ' + this.positionY);
@@ -41,6 +50,10 @@ class Player {
     } else {
       this.positionX--;
       game.map.paintEverything();
+      game.zombie.drawZombie();
+      game.map.seeingRadius();
+
+      //seeingRadius();
     }
   }
 
