@@ -5,6 +5,7 @@ class Player {
     this.positionX = 0;
     this.positionY = 0;
     this.game = game;
+    this.movement = 0;
   }
 
   moveUp() {
@@ -61,16 +62,54 @@ class Player {
   }
 
   drawPlayer() {
-    const imageUrl = './images/Rogue/rogue.png';
-    const playerImg = new Image();
-    playerImg.src = imageUrl;
-    //console.log(this.game);
-    this.game.context.drawImage(
-      playerImg,
-      this.positionX * 45,
-      this.positionY * 45,
-      this.playerWidth,
-      this.playerHeight
-    );
+    if (this.movement == 0) {
+      this.movement++;
+      const imageUrl = '/projects/Cave-Game/images/Hero/Run_000.png';
+      const playerImg = new Image();
+      playerImg.src = imageUrl;
+      this.game.context.drawImage(
+        playerImg,
+        this.positionX * 45,
+        this.positionY * 45,
+        this.playerWidth - 10,
+        this.playerHeight - 10
+      );
+    } else if (this.movement == 1) {
+      this.movement++;
+      const imageUrl = '/projects/Cave-Game/images/Hero/Run_002.png';
+      const playerImg = new Image();
+      playerImg.src = imageUrl;
+      this.game.context.drawImage(
+        playerImg,
+        this.positionX * 45,
+        this.positionY * 45,
+        this.playerWidth - 10,
+        this.playerHeight - 10
+      );
+    } else if (this.movement == 2) {
+      this.movement++;
+      const imageUrl = '/projects/Cave-Game/images/Hero/Run_004.png';
+      const playerImg = new Image();
+      playerImg.src = imageUrl;
+      this.game.context.drawImage(
+        playerImg,
+        this.positionX * 45,
+        this.positionY * 45,
+        this.playerWidth - 10,
+        this.playerHeight - 10
+      );
+    } else {
+      this.movement = 0;
+      const imageUrl = '/projects/Cave-Game/images/Hero/Run_006.png';
+      const playerImg = new Image();
+      playerImg.src = imageUrl;
+      this.game.context.drawImage(
+        playerImg,
+        this.positionX * 45,
+        this.positionY * 45,
+        this.playerWidth - 10,
+        this.playerHeight - 10
+      );
+    }
   }
 }
