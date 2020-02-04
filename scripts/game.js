@@ -10,7 +10,18 @@ class Game {
     this.audio = new Audio('/projects/Cave-Game/sounds/background-sound.mp3');
     this.voices = new Audio('/projects/Cave-Game/sounds/voices.mp3');
     this.scared = new Audio('/projects/Cave-Game/sounds/scared.wav');
+    this.scenery = new Scenery(this);
+    this.controls = new Controls(this);
     this.gameRunning = false;
+    this.map.selectTable();
+    this.drawEverything();
+    this.map.seeingRadius();
+    this.player.drawPlayer();
+    this.audio.play();
+    this.zombie.positionX = this.zombie.xPosition();
+    this.zombie.positionY = this.zombie.yPosition();
+    this.scenery.drawScenery1();
+    this.scenery.drawScenery2();
   }
 
   drawEverything() {
@@ -18,12 +29,14 @@ class Game {
     this.map.paintEverything();
     this.player.drawPlayer();
     this.zombie.drawZombie();
+    this.scenery.drawScenery1();
+    this.scenery.drawScenery2();
   }
 
   start() {
+    this.gameRunning = true;
     this.loop();
     this.checkColision();
-    this.gameRunning = true;
     console.log(gameRunning);
   }
 
@@ -34,14 +47,14 @@ class Game {
     this.zombie.positionX = 9;
     this.zombie.positionY = 9;
     this.map.selectTable();
-    console.log(this.map.table);
     this.drawEverything();
     this.player.drawPlayer();
     this.map.seeingRadius();
+    this.zombie.positionX = game.zombie.xPosition();
+    this.zombie.positionY = game.zombie.yPosition();
   }
 
   pause() {
-    console.log(this.gameRunning);
     if (this.gameRunning === true) {
       this.gameRunning = false;
     } else {
@@ -98,12 +111,12 @@ class Game {
 
   checkColision() {
     if (
-      this.player.positionX == game.zombie.xPosition() &&
-      this.player.positionY == game.zombie.yPosition()
+      this.player.positionX == this.zombie.xPosition() &&
+      this.player.positionY == this.zombie.yPosition()
     ) {
       console.log('Winner');
       console.log(gameRunning);
-      gameRunning = false;
+      this.gameRunning = false;
       this.map.paintEverything();
       this.player.drawPlayer();
       this.zombie.drawZombie();
@@ -111,6 +124,8 @@ class Game {
       setTimeout(
         function() {
           this.map.paintEverything();
+          this.scenery.drawScenery1();
+          //          this.scenery.drawScenery2();
           this.player.drawPlayer();
           this.zombie.drawZombie();
           this.map.seeingRadius();

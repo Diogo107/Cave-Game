@@ -11,7 +11,7 @@ class Zombie {
   xPosition() {
     for (let i = 0; i < 10; i++) {
       for (let x = 0; x < 10; x++) {
-        if (game.map.table[i][x] === 'out') {
+        if (this.game.map.table[i][x] === 'out') {
           var xPositionNumber = x;
         }
       }
@@ -22,7 +22,7 @@ class Zombie {
   yPosition() {
     for (let i = 0; i < 10; i++) {
       for (let x = 0; x < 10; x++) {
-        if (game.map.table[i][x] === 'out') {
+        if (this.game.map.table[i][x] === 'out') {
           var yPositionNumber = i;
         }
       }
@@ -32,7 +32,7 @@ class Zombie {
 
   moveUp() {
     if (this.positionY - 1 < 0) {
-    } else if (game.map.table[this.positionY - 1][this.positionX] == 'b') {
+    } else if (this.game.map.table[this.positionY - 1][this.positionX] == 'b') {
       this.setRandom1();
       console.log('Up');
     } else {
@@ -42,7 +42,7 @@ class Zombie {
 
   moveRight() {
     if (this.positionX + 1 > 9) {
-    } else if (game.map.table[this.positionY][this.positionX + 1] == 'b') {
+    } else if (this.game.map.table[this.positionY][this.positionX + 1] == 'b') {
       this.setRandom1();
       console.log('Right');
     } else {
@@ -52,7 +52,7 @@ class Zombie {
 
   moveDown() {
     if (this.positionY + 1 > 9) {
-    } else if (game.map.table[this.positionY + 1][this.positionX] == 'b') {
+    } else if (this.game.map.table[this.positionY + 1][this.positionX] == 'b') {
       this.setRandom1();
       console.log('Down');
     } else {
@@ -62,7 +62,7 @@ class Zombie {
 
   moveLeft() {
     if (this.positionX - 1 < 0) {
-    } else if (game.map.table[this.positionY][this.positionX - 1] == 'b') {
+    } else if (this.game.map.table[this.positionY][this.positionX - 1] == 'b') {
       this.setRandom1();
       console.log('Left');
     } else {

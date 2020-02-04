@@ -1,57 +1,3 @@
-//Maps (Defined and Default)
-
-/*var table = [
-  ['1', '1', '0', '0', '0', '0', '0', '0', '0', 'out'],
-  ['0', '1', '1', '1', '0', '0', '0', '0', '0', '1'],
-  ['0', '0', '0', '1', '0', '0', '0', '0', '0', '1'],
-  ['0', '0', '0', '1', '0', '0', '0', '0', '0', '1'],
-  ['0', '0', '0', '1', '0', '0', '0', '0', '0', '1'],
-  ['0', '0', '0', '1', '1', '1', '1', '1', '1', '1'],
-  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
-];
-
-var table = [
-  ['1', '1', '0', '0', '0', '0', '0', '0', '0', '0'],
-  ['0', '1', '0', '0', '0', '0', '0', '0', '0', '0'],
-  ['0', '1', '0', '0', '1', '1', '1', '1', '0', '0'],
-  ['1', '1', '0', '0', '1', '0', '0', '1', '0', '0'],
-  ['1', '0', '0', '0', '1', '0', '0', '1', '0', '0'],
-  ['1', '0', '0', '0', '1', '0', '0', '1', '0', '0'],
-  ['1', '1', '1', '1', '1', '0', '0', '1', '0', '0'],
-  ['0', '0', '0', '0', '0', '0', '1', '1', '0', '0'],
-  ['0', '0', '0', '0', '0', '0', '1', '0', '0', '0'],
-  ['0', '0', '0', '0', '0', '0', '1', '1', '1', 'out']
-];
-
-var table3 = [
-  ['1', '1', '0', '1', '1', '1', '1', '1', '0', '0'],
-  ['0', '1', '1', '1', '0', '0', '0', '1', '1', '1'],
-  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '1'],
-  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '1'],
-  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '1'],
-  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '1'],
-  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '1'],
-  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '1'],
-  ['0', '0', '0', '0', '1', '1', '1', '0', '1', '1'],
-  ['out', '1', '1', '1', '1', '0', '1', '1', '1', '0']
-];
-
-var tableDefault = [
-  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
-];*/
-
 class Map {
   constructor(game) {
     this.game = game;
@@ -66,6 +12,13 @@ class Map {
     };
 
     //  console.log(table);
+  }
+
+  drawCrate(a, b) {
+    const imageUrl = '/projects/Cave-Game/images/Objects/Crate.png';
+    const crate = new Image();
+    crate.src = imageUrl;
+    this.game.context.drawImage(crate, a * 45, b * 45, 45, 45);
   }
 
   randomBlackWhite() {
@@ -104,18 +57,24 @@ class Map {
     for (let y = 0; y < this.table.length; y++) {
       for (let x = 0; x < this.table.length; x++) {
         if (table[y][x] == 'b') {
-          context.fillStyle = '#532b24';
+          this.drawCrate(x, y);
         } else if (table[y][x] == 'out') {
           context.fillStyle = 'orange';
+          context.fillRect(
+            x * this.tileWidth,
+            y * this.tile.height,
+            this.tile.width,
+            this.tile.height
+          );
         } else {
           context.fillStyle = 'white';
+          context.fillRect(
+            x * this.tileWidth,
+            y * this.tile.height,
+            this.tile.width,
+            this.tile.height
+          );
         }
-        context.fillRect(
-          x * this.tileWidth,
-          y * this.tile.height,
-          this.tile.width,
-          this.tile.height
-        );
 
         // console.log('x'+x)
         // console.log('i'+i)
@@ -141,24 +100,33 @@ class Map {
 
   seeingRadius() {
     const context = this.game.context;
+    const positionX = this.game.player.positionX;
+    const positionY = this.game.player.positionY;
+    const radius = 3;
     for (let y = 0; y < 10; y++) {
       for (let x = 0; x < 10; x++) {
-        if (
-          (y === game.player.positionY && x === game.player.positionX) ||
-          (y === game.player.positionY && x === game.player.positionX - 1) ||
-          (y === game.player.positionY && x === game.player.positionX - 2) ||
-          (y === game.player.positionY && x === game.player.positionX + 1) ||
-          (y === game.player.positionY && x === game.player.positionX + 2) ||
-          (y - 1 === game.player.positionY && x === game.player.positionX + 1) ||
-          (y - 1 === game.player.positionY && x === game.player.positionX - 1) ||
-          (y + 1 === game.player.positionY && x === game.player.positionX + 1) ||
-          (y + 1 === game.player.positionY && x === game.player.positionX - 1) ||
-          (y - 1 === game.player.positionY && x === game.player.positionX) ||
-          (y + 1 === game.player.positionY && x === game.player.positionX) ||
-          (y - 2 === game.player.positionY && x === game.player.positionX) ||
-          (y + 2 === game.player.positionY && x === game.player.positionX)
-        ) {
-        } else {
+        /*
+        const shouldBeLit =
+          (y === positionY && x === positionX) ||
+          (y === positionY && x === positionX - 1) ||
+          (y === positionY && x === positionX - 2) ||
+          (y === positionY && x === positionX + 1) ||
+          (y === positionY && x === positionX + 2) ||
+          (y - 1 === positionY && x === positionX + 1) ||
+          (y - 1 === positionY && x === positionX - 1) ||
+          (y + 1 === positionY && x === positionX + 1) ||
+          (y + 1 === positionY && x === positionX - 1) ||
+          (y - 1 === positionY && x === positionX) ||
+          (y + 1 === positionY && x === positionX) ||
+          (y - 2 === positionY && x === positionX) ||
+          (y + 2 === positionY && x === positionX);
+        */
+        const shouldBeLit =
+          x < positionX + radius &&
+          x > positionX - radius &&
+          y < positionY + radius &&
+          y > positionY - radius;
+        if (!shouldBeLit) {
           context.fillStyle = 'black';
           context.fillRect(
             x * this.tileWidth,

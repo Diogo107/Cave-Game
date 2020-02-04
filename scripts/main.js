@@ -1,15 +1,12 @@
-const $canvas = document.querySelector('canvas');
+gameRunning = false;
 
-const game = new Game($canvas);
+window.addEventListener('load', () => {
+  const $canvas = document.querySelector('canvas');
+  const game = new Game($canvas);
 
-var gameRunning = false;
-window.onload = function() {
-  game.map.selectTable();
-  game.map.selectTable();
-  game.drawEverything();
-  game.map.seeingRadius();
-  game.player.drawPlayer();
-  game.audio.play();
-  game.zombie.positionX = game.zombie.xPosition();
-  game.zombie.positionY = game.zombie.yPosition();
-};
+  const $btnStart = document.getElementById('start-button');
+
+  $btnStart.addEventListener('click', () => {
+    game.start();
+  });
+});

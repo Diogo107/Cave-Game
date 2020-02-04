@@ -11,36 +11,37 @@ class Player {
   moveUp() {
     if (gameRunning == true) {
       if (this.positionY - 1 < 0) {
-      } else if (game.map.table[this.positionY - 1][this.positionX] == 'b') {
+      } else if (this.game.map.table[this.positionY - 1][this.positionX] == 'b') {
       } else {
         this.positionY--;
-        game.map.paintEverything();
-        game.zombie.drawZombie();
-        game.map.seeingRadius();
+        this.game.map.paintEverything();
+        this.game.zombie.drawZombie();
+        this.game.map.seeingRadius();
       }
     }
   }
+
   moveRight() {
     if (gameRunning == true) {
       if (this.positionX + 1 > 9) {
-      } else if (game.map.table[this.positionY][this.positionX + 1] == 'b') {
+      } else if (this.game.map.table[this.positionY][this.positionX + 1] == 'b') {
       } else {
         this.positionX++;
-        game.map.paintEverything();
-        game.zombie.drawZombie();
-        game.map.seeingRadius();
+        this.game.map.paintEverything();
+        this.game.zombie.drawZombie();
+        this.game.map.seeingRadius();
       }
     }
   }
   moveDown() {
     if (gameRunning == true) {
       if (this.positionY + 1 > 9) {
-      } else if (game.map.table[this.positionY + 1][this.positionX] == 'b') {
+      } else if (this.game.map.table[this.positionY + 1][this.positionX] == 'b') {
       } else {
         this.positionY++;
-        game.map.paintEverything();
-        game.zombie.drawZombie();
-        game.map.seeingRadius();
+        this.game.map.paintEverything();
+        this.game.zombie.drawZombie();
+        this.game.map.seeingRadius();
         //seeingRadius();
       }
     }
@@ -50,12 +51,12 @@ class Player {
   moveLeft() {
     if (gameRunning == true) {
       if (this.positionX - 1 < 0) {
-      } else if (game.map.table[this.positionY][this.positionX - 1] == 'b') {
+      } else if (this.game.map.table[this.positionY][this.positionX - 1] == 'b') {
       } else {
         this.positionX--;
-        game.map.paintEverything();
-        game.zombie.drawZombie();
-        game.map.seeingRadius();
+        this.game.map.paintEverything();
+        this.game.zombie.drawZombie();
+        this.game.map.seeingRadius();
 
         //seeingRadius();
       }
