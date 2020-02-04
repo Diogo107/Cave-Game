@@ -9,55 +9,56 @@ class Player {
   }
 
   moveUp() {
-    //console.log(table);
-    // if (this.positionY - 1 == game.zombie.positionY) {
-    //   game.reset();
-    // }
-    if (this.positionY - 1 < 0) {
-    } else if (table[this.positionY - 1][this.positionX] == 'b') {
-    } else {
-      this.positionY--;
-      game.map.paintEverything();
-      game.zombie.drawZombie();
-      game.map.seeingRadius();
+    if (gameRunning == true) {
+      if (this.positionY - 1 < 0) {
+      } else if (table[this.positionY - 1][this.positionX] == 'b') {
+      } else {
+        this.positionY--;
+        game.map.paintEverything();
+        game.zombie.drawZombie();
+        game.map.seeingRadius();
+      }
     }
   }
   moveRight() {
-    if (this.positionX + 1 > 9) {
-    } else if (table[this.positionY][this.positionX + 1] == 'b') {
-    } else {
-      this.positionX++;
-      game.map.paintEverything();
-      game.zombie.drawZombie();
-      game.map.seeingRadius();
-
-      //seeingRadius();
+    if (gameRunning == true) {
+      if (this.positionX + 1 > 9) {
+      } else if (table[this.positionY][this.positionX + 1] == 'b') {
+      } else {
+        this.positionX++;
+        game.map.paintEverything();
+        game.zombie.drawZombie();
+        game.map.seeingRadius();
+      }
     }
-    //console.log(table[this.positionY][this.positionX]);
   }
   moveDown() {
-    if (this.positionY + 1 > 9) {
-    } else if (table[this.positionY + 1][this.positionX] == 'b') {
-    } else {
-      this.positionY++;
-      game.map.paintEverything();
-      game.zombie.drawZombie();
-      game.map.seeingRadius();
-      //seeingRadius();
+    if (gameRunning == true) {
+      if (this.positionY + 1 > 9) {
+      } else if (table[this.positionY + 1][this.positionX] == 'b') {
+      } else {
+        this.positionY++;
+        game.map.paintEverything();
+        game.zombie.drawZombie();
+        game.map.seeingRadius();
+        //seeingRadius();
+      }
     }
 
     //console.log(this.positionX + ' ' + this.positionY);
   }
   moveLeft() {
-    if (this.positionX - 1 < 0) {
-    } else if (table[this.positionY][this.positionX - 1] == 'b') {
-    } else {
-      this.positionX--;
-      game.map.paintEverything();
-      game.zombie.drawZombie();
-      game.map.seeingRadius();
+    if (gameRunning == true) {
+      if (this.positionX - 1 < 0) {
+      } else if (table[this.positionY][this.positionX - 1] == 'b') {
+      } else {
+        this.positionX--;
+        game.map.paintEverything();
+        game.zombie.drawZombie();
+        game.map.seeingRadius();
 
-      //seeingRadius();
+        //seeingRadius();
+      }
     }
   }
 

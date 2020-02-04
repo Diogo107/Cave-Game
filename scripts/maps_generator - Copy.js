@@ -1,0 +1,229 @@
+var table = [
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
+];
+
+var table = [
+  ['1', '1', '0', '0', '0', '0', '0', '0', '0', '0'],
+  ['0', '1', '0', '0', '0', '0', '0', '0', '0', '0'],
+  ['0', '1', '0', '0', '1', '1', '1', '1', '0', '0'],
+  ['1', '1', '0', '0', '1', '0', '0', '1', '0', '0'],
+  ['1', '0', '0', '0', '1', '0', '0', '1', '0', '0'],
+  ['1', '0', '0', '0', '1', '0', '0', '1', '0', '0'],
+  ['1', '1', '1', '1', '1', '0', '0', '1', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '1', '1', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '1', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '1', '1', '1', '1']
+];
+
+var tableDefault = [
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
+];
+
+var tableDefault = [
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+  ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
+];
+
+var table1 = [];
+var tableSize = table.length;
+
+class Map {
+  constructor(game) {
+    this.game = game;
+    this.width = this.game.$canvas.width;
+    this.height = this.game.$canvas.height;
+    this.tileWidth = this.width / table[0].length;
+    this.tileHeight = this.height / table.length;
+    this.tile = {
+      width: this.tileWidth,
+      height: this.tileHeight
+    };
+
+    //  console.log(table);
+  }
+
+  randomBlackWhite() {
+    var bW = Math.floor(Math.random() * 10);
+    //console.log(bW)
+    if (bW < 5) {
+      return 'w';
+    } else {
+      return 'b';
+    }
+  }
+
+  randomTable(array) {
+    for (let i = 0; i < array.length; i++) {
+      for (let x = 0; x < array[i].length; x++) {
+        if (array[i][x] === '1') {
+          array[i][x] = 'x';
+        } else {
+          array[i][x] = this.randomBlackWhite();
+        }
+
+        //console.log(array[i][x]);
+      }
+      //console.log(i)
+    }
+    //var table1 = array;
+  }
+
+  //console.log(tableSize)
+
+  paint(table) {
+    const context = this.game.context;
+    for (let y = 0; y < tableSize; y++) {
+      for (let x = 0; x < tableSize; x++) {
+        if (table[y][x] == 'b') {
+          context.fillStyle = '#532b24';
+        } else {
+          context.fillStyle = 'white';
+        }
+        context.fillRect(
+          x * this.tileWidth,
+          y * this.tile.height,
+          this.tile.width,
+          this.tile.height
+        );
+
+        // console.log('x'+x)
+        // console.log('i'+i)
+        // context.fillStyle = 'Black'
+        // context.fillRect(i * tile.width[x], i * tile.height[x], (i+1)*tile.width[x], (x+1)*tile.height[x]);
+      }
+    }
+    context.fillStyle = 'black';
+    context.fillRect(0, 0, 3, context.canvas.height);
+    context.fillRect(0, 0, context.canvas.width, 3);
+    context.fillRect(context.canvas.width - 3, 0, context.canvas.width, context.canvas.height);
+    context.fillRect(0, context.canvas.height - 3, context.canvas.width, 3);
+  }
+
+  paintEverything() {
+    const context = this.game.context;
+    context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+    this.paint(table);
+    //    this.randomTable(table);
+    //console.log(game.player.positionY);
+    //console.log(table[game.player.positionY][game.player.positionX]);
+  }
+
+  seeingRadius() {
+    const context = this.game.context;
+    for (let y = 0; y < tableSize; y++) {
+      for (let x = 0; x < tableSize; x++) {
+        if (
+          (y === game.player.positionY && x === game.player.positionX) ||
+          (y === game.player.positionY && x === game.player.positionX - 1) ||
+          (y === game.player.positionY && x === game.player.positionX - 2) ||
+          (y === game.player.positionY && x === game.player.positionX + 1) ||
+          (y === game.player.positionY && x === game.player.positionX + 2) ||
+          (y - 1 === game.player.positionY && x === game.player.positionX + 1) ||
+          (y - 1 === game.player.positionY && x === game.player.positionX - 1) ||
+          (y + 1 === game.player.positionY && x === game.player.positionX + 1) ||
+          (y + 1 === game.player.positionY && x === game.player.positionX - 1) ||
+          (y - 1 === game.player.positionY && x === game.player.positionX) ||
+          (y + 1 === game.player.positionY && x === game.player.positionX) ||
+          (y - 2 === game.player.positionY && x === game.player.positionX) ||
+          (y + 2 === game.player.positionY && x === game.player.positionX)
+        ) {
+        } else {
+          context.fillStyle = 'black';
+          context.fillRect(
+            x * this.tileWidth,
+            y * this.tile.height,
+            this.tile.width,
+            this.tile.height
+          );
+        }
+      }
+    }
+  }
+  selectTable() {
+    var table1 = [
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
+    ];
+
+    var table2 = [
+      ['1', '1', '0', '0', '0', '0', '0', '0', '0', '0'],
+      ['0', '1', '0', '0', '0', '0', '0', '0', '0', '0'],
+      ['0', '1', '0', '0', '1', '1', '1', '1', '0', '0'],
+      ['1', '1', '0', '0', '1', '0', '0', '1', '0', '0'],
+      ['1', '0', '0', '0', '1', '0', '0', '1', '0', '0'],
+      ['1', '0', '0', '0', '1', '0', '0', '1', '0', '0'],
+      ['1', '1', '1', '1', '1', '0', '0', '1', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '1', '1', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '1', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '1', '1', '1', '1']
+    ];
+
+    var tableDefault = [
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
+    ];
+
+    var tableDefault = [
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+      ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
+    ];
+    var number;
+    function randomizePath() {
+      var number = Math.floor(Math.random() * 3 * 10);
+
+      return number;
+    }
+
+    return (table = `table${number}`);
+  }
+}
