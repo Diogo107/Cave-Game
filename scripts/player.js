@@ -9,6 +9,9 @@ class Player {
 
   moveUp() {
     //console.log(table);
+    // if (this.positionY - 1 == game.zombie.positionY) {
+    //   game.reset();
+    // }
     if (this.positionY - 1 < 0) {
     } else if (table[this.positionY - 1][this.positionX] == 'b') {
     } else {

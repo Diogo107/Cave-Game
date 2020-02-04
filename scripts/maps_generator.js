@@ -93,12 +93,12 @@ class Map {
       }
       //console.log(i)
     }
-    var table1 = array;
+    //var table1 = array;
   }
 
   //console.log(tableSize)
 
-  paint(table1) {
+  paint(table) {
     const context = this.game.context;
     for (let y = 0; y < tableSize; y++) {
       for (let x = 0; x < tableSize; x++) {
@@ -130,8 +130,8 @@ class Map {
   paintEverything() {
     const context = this.game.context;
     context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+    this.paint(table);
     //    this.randomTable(table);
-    this.paint(table1);
     //console.log(game.player.positionY);
     //console.log(table[game.player.positionY][game.player.positionX]);
   }

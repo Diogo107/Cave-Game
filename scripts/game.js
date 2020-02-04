@@ -9,9 +9,9 @@ class Game {
   }
 
   drawEverything() {
+    this.map.randomTable(table);
     this.map.paintEverything();
     this.player.drawPlayer();
-    this.zombie.drawZombie();
     this.zombie.drawZombie();
   }
 }

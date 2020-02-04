@@ -1,21 +1,24 @@
 const $canvas = document.querySelector('canvas');
-//const context = $canvas.getContext('2d');
 
 const game = new Game($canvas);
 
 window.onload = function() {
-  game.drawEverything();
-  game.map.seeingRadius();
+  // game.drawEverything();
+  // game.player.drawPlayer();
+  // game.map.seeingRadius();
 };
-game.map.randomTable(table);
+game.drawEverything();
 game.player.drawPlayer();
 game.map.seeingRadius();
 
 function start() {
-  game.map.randomTable(table);
+  game.player.positionX = 0;
+  game.player.positionY = 0;
+  game.zombie.positionX = 9;
+  game.zombie.positionY = 9;
+  game.drawEverything();
   game.player.drawPlayer();
   game.map.seeingRadius();
-  game.zombie.drawZombie();
   var gameRunning = true;
 }
 
@@ -32,30 +35,37 @@ function reset() {
 function pause() {}
 
 //RunLogic
-var gameSpeed = 1.5;
+var gameSpeed = 2;
 var gameRunning = true;
 function loop() {
+  game.zombie.setRandom1();
   if (gameRunning === true) {
     setTimeout(function() {
-      game.zombie.setRandom1();
       game.map.paintEverything();
-      game.zombie.drawZombie();
       game.player.drawPlayer();
-      game.map.seeingRadius();
-      if (
-        game.player.positionX === game.zombie.positionX &&
-        game.player.positionY === game.zombie.positionY
-      ) {
-        gameRunning = false;
-        console.log('Ups');
-        reset();
-      }
+      game.zombie.drawZombie();
+      //game.map.seeingRadius();
       loop();
-    }, gameSpeed * 1000);
+    }, 1000 / gameSpeed);
   } else {
   }
 }
 
+function checkColision() {
+  setTimeout(function() {
+    if (
+      game.player.positionX === game.zombie.positionX &&
+      game.player.positionY === game.zombie.positionY
+    ) {
+      gameRunning = false;
+      console.log('Kabooom');
+      reset();
+    }
+    checkColision();
+  }, 50);
+}
+
 if (gameRunning === true) {
   loop();
+  //checkColision();
 }
