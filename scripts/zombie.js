@@ -8,9 +8,33 @@ class Zombie {
     this.movement = 0;
   }
 
+  xPosition() {
+    for (let i = 0; i < 10; i++) {
+      for (let x = 0; x < 10; x++) {
+        if (game.map.table[i][x] === 'out') {
+          var xPositionNumber = x;
+        }
+      }
+    }
+    return xPositionNumber;
+  }
+
+  yPosition() {
+    for (let i = 0; i < 10; i++) {
+      for (let x = 0; x < 10; x++) {
+        if (game.map.table[i][x] === 'out') {
+          var yPositionNumber = i;
+        }
+      }
+    }
+    return yPositionNumber;
+  }
+
   moveUp() {
     if (this.positionY - 1 < 0) {
-    } else if (table[this.positionY - 1][this.positionX] == 'b') {
+    } else if (game.map.table[this.positionY - 1][this.positionX] == 'b') {
+      this.setRandom1();
+      console.log('Up');
     } else {
       this.positionY--;
     }
@@ -18,7 +42,9 @@ class Zombie {
 
   moveRight() {
     if (this.positionX + 1 > 9) {
-    } else if (table[this.positionY][this.positionX + 1] == 'b') {
+    } else if (game.map.table[this.positionY][this.positionX + 1] == 'b') {
+      this.setRandom1();
+      console.log('Right');
     } else {
       this.positionX++;
     }
@@ -26,7 +52,9 @@ class Zombie {
 
   moveDown() {
     if (this.positionY + 1 > 9) {
-    } else if (table[this.positionY + 1][this.positionX] == 'b') {
+    } else if (game.map.table[this.positionY + 1][this.positionX] == 'b') {
+      this.setRandom1();
+      console.log('Down');
     } else {
       this.positionY++;
     }
@@ -34,7 +62,9 @@ class Zombie {
 
   moveLeft() {
     if (this.positionX - 1 < 0) {
-    } else if (table[this.positionY][this.positionX - 1] == 'b') {
+    } else if (game.map.table[this.positionY][this.positionX - 1] == 'b') {
+      this.setRandom1();
+      console.log('Left');
     } else {
       this.positionX--;
       console.log(this.positionX + ' ' + this.positionY);
@@ -52,6 +82,8 @@ class Zombie {
     } else if (movement == 6 || movement == 7) {
       this.moveRight();
     } else {
+      this.setRandom1();
+      console.log('Random');
     }
 
     /*switch (movement) {

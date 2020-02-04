@@ -11,7 +11,7 @@ class Player {
   moveUp() {
     if (gameRunning == true) {
       if (this.positionY - 1 < 0) {
-      } else if (table[this.positionY - 1][this.positionX] == 'b') {
+      } else if (game.map.table[this.positionY - 1][this.positionX] == 'b') {
       } else {
         this.positionY--;
         game.map.paintEverything();
@@ -23,7 +23,7 @@ class Player {
   moveRight() {
     if (gameRunning == true) {
       if (this.positionX + 1 > 9) {
-      } else if (table[this.positionY][this.positionX + 1] == 'b') {
+      } else if (game.map.table[this.positionY][this.positionX + 1] == 'b') {
       } else {
         this.positionX++;
         game.map.paintEverything();
@@ -35,7 +35,7 @@ class Player {
   moveDown() {
     if (gameRunning == true) {
       if (this.positionY + 1 > 9) {
-      } else if (table[this.positionY + 1][this.positionX] == 'b') {
+      } else if (game.map.table[this.positionY + 1][this.positionX] == 'b') {
       } else {
         this.positionY++;
         game.map.paintEverything();
@@ -50,7 +50,7 @@ class Player {
   moveLeft() {
     if (gameRunning == true) {
       if (this.positionX - 1 < 0) {
-      } else if (table[this.positionY][this.positionX - 1] == 'b') {
+      } else if (game.map.table[this.positionY][this.positionX - 1] == 'b') {
       } else {
         this.positionX--;
         game.map.paintEverything();
