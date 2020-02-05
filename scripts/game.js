@@ -26,18 +26,12 @@ class Game {
   }
 
   drawLost() {
-    const imageUrl = '/projects/Cave-Game/images/Lost.png';
-    const lostImg = new Image();
-    lostImg.src = imageUrl;
     this.context.drawImage(lostImg, 75, 150, 300, 300);
     console.log('printed');
   }
 
-  score() {
-    var actualScore = Number(document.getElementById('score').innerText);
-    console.log(score);
-    actualScore++;
-    score.innerText = actualScore;
+  setScore() {
+    score.innerText = this.scoreValue;
   }
 
   drawEverything() {
@@ -46,7 +40,6 @@ class Game {
     this.player.drawPlayer();
     this.zombie.drawZombie();
     this.scenery.drawScenery1();
-    this.drawLost();
     //this.scenery.drawScenery2();
   }
 
@@ -71,21 +64,24 @@ class Game {
     this.drawLost();
     this.zombie.positionX = this.zombie.xPosition();
     this.zombie.positionY = this.zombie.yPosition();
-    this.score = 0;
+    this.setScore();
   }
 
   pause() {
     if (this.gameRunning === true) {
       this.gameRunning = false;
+      console.log(this.gameRunning);
     } else {
+      console.log(this.gameRunning);
       this.gameRunning = true;
       this.loop();
+      this.checkColision();
     }
   }
 
   loop() {
     //    console.log('Começou');
-    if (this.gameRunning == true) {
+    if (this.gameRunning === true) {
       this.zombie.setRandom1();
       //console.log('Move already');
       setTimeout(
@@ -126,42 +122,45 @@ class Game {
         1000 / this.gameSpeed
       );
     } else {
-      this.gameRunning == true;
+      this.gameRunning === false;
     }
   }
 
   checkColision() {
-    if (
-      this.player.positionX === this.zombie.xPosition() &&
-      this.player.positionY === this.zombie.yPosition()
-    ) {
-      console.log('Winner');
-      this.map.paintEverything();
-      this.player.drawPlayer();
-      this.zombie.drawZombie();
-      this.gameRunning = false;
-      this.score();
-    } else {
-      setTimeout(
-        function() {
-          this.map.paintEverything();
-          this.scenery.drawScenery1();
-          this.player.drawPlayer();
-          this.zombie.drawZombie();
-          this.map.seeingRadius();
-          if (
-            this.player.positionX === this.zombie.positionX &&
-            this.player.positionY === this.zombie.positionY
-          ) {
-            this.gameRunning = false;
-            console.log('Just ate some brains!');
-            this.reset();
-          } else {
-            this.gameRunning = true;
-            this.checkColision();
-          }
-        }.bind(this)
-      );
+    if (this.gameRunning === true) {
+      if (
+        this.player.positionX === this.zombie.xPosition() &&
+        this.player.positionY === this.zombie.yPosition()
+      ) {
+        console.log('Winner');
+        this.map.paintEverything();
+        this.player.drawPlayer();
+        this.zombie.drawZombie();
+        this.scoreValue++;
+        this.gameRunning = false;
+        this.setScore();
+      } else {
+        setTimeout(
+          function() {
+            this.map.paintEverything();
+            this.scenery.drawScenery1();
+            this.player.drawPlayer();
+            this.zombie.drawZombie();
+            this.map.seeingRadius();
+            if (
+              this.player.positionX === this.zombie.positionX &&
+              this.player.positionY === this.zombie.positionY
+            ) {
+              this.scoreValue = 0;
+              this.gameRunning = false;
+              console.log('Just ate some brains!');
+              this.reset();
+            } else {
+              this.checkColision();
+            }
+          }.bind(this)
+        );
+      }
     }
   }
 }

@@ -66,7 +66,7 @@ class Player {
   drawPlayer() {
     if (this.movement == 0) {
       this.movement++;
-      const imageUrl = '/projects/Cave-Game/images/Hero/Run_000.png';
+      const imageUrl = './images/Hero/Run_000.png';
       const playerImg = new Image();
       playerImg.src = imageUrl;
       this.game.context.drawImage(

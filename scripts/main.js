@@ -10,7 +10,7 @@ window.addEventListener('load', () => {
     game.start();
   });
   $btnReset.addEventListener('click', () => {
-    game.reset();
+    game.drawLost();
   });
   $btnPause.addEventListener('click', () => {
     game.pause();

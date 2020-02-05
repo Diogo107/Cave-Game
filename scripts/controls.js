@@ -1,3 +1,7 @@
+const imageUrl = '/projects/Cave-Game/images/Lost.png';
+const lostImg = new Image();
+lostImg.src = imageUrl;
+
 class Controls {
   constructor(game) {
     this.game = game;
@@ -44,7 +48,7 @@ class Controls {
           }
           break;
         case 32:
-          if (this.game.player.positionX == 0 && this.game.player.positionY == 0) {
+          if (this.game.player.positionX === 0 && this.game.player.positionY === 0) {
             this.game.start();
           } else if (
             this.game.player.positionX === this.game.zombie.xPosition() &&

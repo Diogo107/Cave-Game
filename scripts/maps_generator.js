@@ -113,7 +113,7 @@ class Map {
     const context = this.game.context;
     const positionX = this.game.player.positionX;
     const positionY = this.game.player.positionY;
-    const radius = 10;
+    const radius = 2;
     for (let y = 0; y < 10; y++) {
       for (let x = 0; x < 10; x++) {
         const shouldBeLit =
