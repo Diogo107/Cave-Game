@@ -6,14 +6,14 @@ class Scenery {
   }
 
   drawScenery1() {
-    const imageUrl = '/projects/Cave-Game/images/Objects/ArrowSign.png';
+    const imageUrl = './images/Objects/ArrowSign.png';
     const begginingArrow = new Image();
     begginingArrow.src = imageUrl;
     this.game.context.drawImage(begginingArrow, 10, 5, 30, 30);
   }
 
   drawScenery2() {
-    const imageUrl = '/projects/Cave-Game/images/Objects/Crate.png';
+    const imageUrl = './images/Objects/Crate.png';
     const begginingArrow = new Image();
     begginingArrow.src = imageUrl;
     this.game.context.drawImage(begginingArrow, 0, 0, 45, 45);

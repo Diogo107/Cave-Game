@@ -15,14 +15,11 @@ class Map {
   }
 
   drawCrate(a, b) {
-    const imageUrl = '/projects/Cave-Game/images/Objects/Crate.png';
-    const crate = new Image();
-    crate.src = imageUrl;
     this.game.context.drawImage(crate, a * 45, b * 45, 45, 45);
   }
 
   drawTreasure(a, b) {
-    const imageUrl = '/projects/Cave-Game/images/Objects/treasure chest0006.png';
+    const imageUrl = './images/Objects/treasure chest0006.png';
     const treasure = new Image();
     treasure.src = imageUrl;
     this.game.context.drawImage(treasure, a * 45, b * 45, 45, 45);

@@ -4,28 +4,30 @@ class Game {
     this.context = $canvas.getContext('2d');
     this.player = new Player(this);
     this.zombie = new Zombie(this);
-    //    this.zombie2 = new Zombie(this);
+    this.data = new Data(this);
     this.map = new Map(this);
     this.gameSpeed = 1;
-    this.audio = new Audio('/projects/Cave-Game/sounds/background-sound.mp3');
-    this.voices = new Audio('/projects/Cave-Game/sounds/voices.mp3');
-    this.scared = new Audio('/projects/Cave-Game/sounds/scared.wav');
+    this.audio = new Audio('./sounds/background-sound.mp3');
+    this.voices = new Audio('./sounds/voices.mp3');
+    this.scared = new Audio('./sounds/scared.wav');
     this.scenery = new Scenery(this);
     this.controls = new Controls(this);
     this.gameRunning = false;
     this.map.selectTable();
     this.drawEverything();
     this.map.seeingRadius();
-    this.player.drawPlayer();
     this.audio.play();
     this.zombie.positionX = this.zombie.xPosition();
     this.zombie.positionY = this.zombie.yPosition();
     this.scenery.drawScenery1();
-    this.scenery.drawScenery2();
+    this.player.drawPlayer();
     this.scoreValue = 0;
   }
 
   drawLost() {
+    const imageUrl = '/projects/Cave-Game/images/Lost.png';
+    const lostImg = new Image();
+    lostImg.src = imageUrl;
     this.context.drawImage(lostImg, 75, 150, 300, 300);
     console.log('printed');
   }

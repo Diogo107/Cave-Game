@@ -78,7 +78,7 @@ class Player {
       );
     } else if (this.movement == 1) {
       this.movement++;
-      const imageUrl = '/projects/Cave-Game/images/Hero/Run_002.png';
+      const imageUrl = './images/Hero/Run_002.png';
       const playerImg = new Image();
       playerImg.src = imageUrl;
       this.game.context.drawImage(
@@ -90,7 +90,7 @@ class Player {
       );
     } else if (this.movement == 2) {
       this.movement++;
-      const imageUrl = '/projects/Cave-Game/images/Hero/Run_004.png';
+      const imageUrl = './images/Hero/Run_004.png';
       const playerImg = new Image();
       playerImg.src = imageUrl;
       this.game.context.drawImage(
@@ -102,7 +102,7 @@ class Player {
       );
     } else {
       this.movement = 0;
-      const imageUrl = '/projects/Cave-Game/images/Hero/Run_006.png';
+      const imageUrl = './images/Hero/Run_006.png';
       const playerImg = new Image();
       playerImg.src = imageUrl;
       this.game.context.drawImage(

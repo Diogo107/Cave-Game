@@ -1,7 +1,3 @@
-const imageUrl = '/projects/Cave-Game/images/Lost.png';
-const lostImg = new Image();
-lostImg.src = imageUrl;
-
 class Controls {
   constructor(game) {
     this.game = game;

@@ -133,7 +133,7 @@ class Zombie {
   drawZombie() {
     if (this.movement == 0) {
       this.movement++;
-      const imageUrl = '/projects/Cave-Game/images/Zombie/0_Reaper_Man_Walking_001.png';
+      const imageUrl = './images/Zombie/0_Reaper_Man_Walking_001.png';
       const zombieImg = new Image();
       zombieImg.src = imageUrl;
       this.game.context.drawImage(
@@ -145,7 +145,7 @@ class Zombie {
       );
     } else if (this.movement == 1) {
       this.movement++;
-      const imageUrl = '/projects/Cave-Game/images/Zombie/0_Reaper_Man_Walking_004.png';
+      const imageUrl = './images/Zombie/0_Reaper_Man_Walking_004.png';
       const zombieImg = new Image();
       zombieImg.src = imageUrl;
       this.game.context.drawImage(
@@ -157,7 +157,7 @@ class Zombie {
       );
     } else if (this.movement == 2) {
       this.movement++;
-      const imageUrl = '/projects/Cave-Game/images/Zombie/0_Reaper_Man_Walking_022.png';
+      const imageUrl = './images/Zombie/0_Reaper_Man_Walking_022.png';
       const zombieImg = new Image();
       zombieImg.src = imageUrl;
       this.game.context.drawImage(
@@ -169,7 +169,7 @@ class Zombie {
       );
     } else {
       this.movement = 0;
-      const imageUrl = '/projects/Cave-Game/images/Zombie/0_Reaper_Man_Walking_019.png';
+      const imageUrl = './images/Zombie/0_Reaper_Man_Walking_019.png';
       const zombieImg = new Image();
       zombieImg.src = imageUrl;
       this.game.context.drawImage(
