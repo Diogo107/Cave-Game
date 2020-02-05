@@ -93,6 +93,9 @@ class Map {
     const context = this.game.context;
     context.clearRect(0, 0, context.canvas.width, context.canvas.height);
     this.paint(this.table);
+    if (this.game.gameRunning === false) {
+      this.game.drawLost();
+    }
     //    this.randomTable(table);
     //console.log(game.player.positionY);
     //console.log(table[game.player.positionY][game.player.positionX]);
@@ -102,7 +105,7 @@ class Map {
     const context = this.game.context;
     const positionX = this.game.player.positionX;
     const positionY = this.game.player.positionY;
-    const radius = 9;
+    const radius = 2;
     for (let y = 0; y < 10; y++) {
       for (let x = 0; x < 10; x++) {
         const shouldBeLit =

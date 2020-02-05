@@ -24,20 +24,30 @@ class Game {
     this.scenery.drawScenery2();
   }
 
+  drawLost() {
+    const imageUrl = '/projects/Cave-Game/images/Lost.png';
+    const lostImg = new Image();
+    lostImg.src = imageUrl;
+    this.context.drawImage(lostImg, 75, 150, 300, 300);
+    console.log('printed');
+  }
+
   drawEverything() {
     this.map.randomTable(this.map.table);
     this.map.paintEverything();
     this.player.drawPlayer();
     this.zombie.drawZombie();
     this.scenery.drawScenery1();
-    this.scenery.drawScenery2();
+    this.drawLost();
+    //this.scenery.drawScenery2();
   }
 
   start() {
+    if ((this.gameRunning = true)) {
+    }
     this.gameRunning = true;
     this.loop();
     this.checkColision();
-    console.log(gameRunning);
   }
 
   reset() {
@@ -50,6 +60,7 @@ class Game {
     this.drawEverything();
     this.player.drawPlayer();
     this.map.seeingRadius();
+    this.drawLost();
     this.zombie.positionX = this.zombie.xPosition();
     this.zombie.positionY = this.zombie.yPosition();
   }
@@ -115,7 +126,6 @@ class Game {
       this.player.positionY == this.zombie.yPosition()
     ) {
       console.log('Winner');
-      console.log(gameRunning);
       this.gameRunning = false;
       this.map.paintEverything();
       this.player.drawPlayer();
@@ -125,7 +135,6 @@ class Game {
         function() {
           this.map.paintEverything();
           this.scenery.drawScenery1();
-          //          this.scenery.drawScenery2();
           this.player.drawPlayer();
           this.zombie.drawZombie();
           this.map.seeingRadius();
@@ -133,15 +142,14 @@ class Game {
             this.player.positionX === this.zombie.positionX &&
             this.player.positionY === this.zombie.positionY
           ) {
-            gameRunning = false;
-            console.log(gameRunning);
-            console.log('Kabooom');
+            this.gameRunning = false;
+            console.log('Just ate some brains!');
             this.reset();
+          } else {
+            this.gameRunning = true;
+            this.checkColision();
           }
-          gameRunning = true;
-          this.checkColision();
-        }.bind(this),
-        100
+        }.bind(this)
       );
     }
   }

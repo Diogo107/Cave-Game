@@ -9,7 +9,7 @@ class Player {
   }
 
   moveUp() {
-    if (gameRunning == true) {
+    if (this.game.gameRunning == true) {
       if (this.positionY - 1 < 0) {
       } else if (this.game.map.table[this.positionY - 1][this.positionX] == 'b') {
       } else {
@@ -22,7 +22,7 @@ class Player {
   }
 
   moveRight() {
-    if (gameRunning == true) {
+    if (this.game.gameRunning == true) {
       if (this.positionX + 1 > 9) {
       } else if (this.game.map.table[this.positionY][this.positionX + 1] == 'b') {
       } else {
@@ -34,7 +34,7 @@ class Player {
     }
   }
   moveDown() {
-    if (gameRunning == true) {
+    if (this.game.gameRunning == true) {
       if (this.positionY + 1 > 9) {
       } else if (this.game.map.table[this.positionY + 1][this.positionX] == 'b') {
       } else {
@@ -49,7 +49,7 @@ class Player {
     //console.log(this.positionX + ' ' + this.positionY);
   }
   moveLeft() {
-    if (gameRunning == true) {
+    if (this.game.gameRunning == true) {
       if (this.positionX - 1 < 0) {
       } else if (this.game.map.table[this.positionY][this.positionX - 1] == 'b') {
       } else {

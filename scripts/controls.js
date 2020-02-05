@@ -44,11 +44,18 @@ class Controls {
           }
           break;
         case 32:
-          if (this.game.gameRunning === true) {
-            this.game.gameRunning = false;
+          if (this.game.player.positionX == 0 && this.game.player.positionY == 0) {
+            this.game.start();
+          } else if (
+            this.game.player.positionX === this.game.zombie.xPosition() &&
+            this.game.player.positionY === this.game.zombie.yPosition()
+            // (this.game.player.positionX == 9 && this.game.player.positionY == 9) ||
+            // (this.game.player.positionX == 0 && this.game.player.positionY == 9) ||
+            // (this.game.player.positionX == 9 && this.game.player.positionY == 0)
+          ) {
+            this.game.reset();
           } else {
-            this.game.gameRunning = true;
-            this.game.loop();
+            this.game.pause();
           }
           break;
       }
