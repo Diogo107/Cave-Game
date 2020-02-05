@@ -21,6 +21,13 @@ class Map {
     this.game.context.drawImage(crate, a * 45, b * 45, 45, 45);
   }
 
+  drawTreasure(a, b) {
+    const imageUrl = '/projects/Cave-Game/images/Objects/treasure chest0006.png';
+    const treasure = new Image();
+    treasure.src = imageUrl;
+    this.game.context.drawImage(treasure, a * 45, b * 45, 45, 45);
+  }
+
   randomBlackWhite() {
     var bW = Math.floor(Math.random() * 10);
     //console.log(bW)
@@ -59,13 +66,14 @@ class Map {
         if (table[y][x] == 'b') {
           this.drawCrate(x, y);
         } else if (table[y][x] == 'out') {
-          context.fillStyle = 'orange';
+          context.fillStyle = 'white';
           context.fillRect(
             x * this.tileWidth,
             y * this.tile.height,
             this.tile.width,
             this.tile.height
           );
+          this.drawTreasure(x, y);
         } else {
           context.fillStyle = 'white';
           context.fillRect(
@@ -105,7 +113,7 @@ class Map {
     const context = this.game.context;
     const positionX = this.game.player.positionX;
     const positionY = this.game.player.positionY;
-    const radius = 2;
+    const radius = 10;
     for (let y = 0; y < 10; y++) {
       for (let x = 0; x < 10; x++) {
         const shouldBeLit =

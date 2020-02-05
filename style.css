@@ -11,6 +11,7 @@ h1 {
 h4 {
   text-align: center;
   text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;
+  padding-bottom: 30px;
 }
 
 .Title {
@@ -57,7 +58,6 @@ img {
 body {
   padding-bottom: 100px;
   background-image: url('./images/Background.jpg');
-  background-color: red;
   background-repeat: no-repeat;
   background-size: cover;
   margin-bottom: auto;
@@ -83,7 +83,7 @@ body {
 
 .Rules div {
   display: flex;
-
+  margin-left: 15px;
   background: none;
   align-items: center;
 }

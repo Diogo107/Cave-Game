@@ -22,6 +22,7 @@ class Game {
     this.zombie.positionY = this.zombie.yPosition();
     this.scenery.drawScenery1();
     this.scenery.drawScenery2();
+    this.scoreValue = 0;
   }
 
   drawLost() {
@@ -30,6 +31,13 @@ class Game {
     lostImg.src = imageUrl;
     this.context.drawImage(lostImg, 75, 150, 300, 300);
     console.log('printed');
+  }
+
+  score() {
+    var actualScore = Number(document.getElementById('score').innerText);
+    console.log(score);
+    actualScore++;
+    score.innerText = actualScore;
   }
 
   drawEverything() {
@@ -63,6 +71,7 @@ class Game {
     this.drawLost();
     this.zombie.positionX = this.zombie.xPosition();
     this.zombie.positionY = this.zombie.yPosition();
+    this.score = 0;
   }
 
   pause() {
@@ -117,19 +126,21 @@ class Game {
         1000 / this.gameSpeed
       );
     } else {
+      this.gameRunning == true;
     }
   }
 
   checkColision() {
     if (
-      this.player.positionX == this.zombie.xPosition() &&
-      this.player.positionY == this.zombie.yPosition()
+      this.player.positionX === this.zombie.xPosition() &&
+      this.player.positionY === this.zombie.yPosition()
     ) {
       console.log('Winner');
-      this.gameRunning = false;
       this.map.paintEverything();
       this.player.drawPlayer();
       this.zombie.drawZombie();
+      this.gameRunning = false;
+      this.score();
     } else {
       setTimeout(
         function() {
