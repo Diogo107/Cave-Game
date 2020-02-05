@@ -102,11 +102,22 @@ class Map {
     const context = this.game.context;
     const positionX = this.game.player.positionX;
     const positionY = this.game.player.positionY;
-    const radius = 3;
+    const radius = 9;
     for (let y = 0; y < 10; y++) {
       for (let x = 0; x < 10; x++) {
-        /*
         const shouldBeLit =
+          (Math.abs(positionX - x) < radius && Math.abs(positionY - y) < radius) ||
+          (positionX === x && Math.abs(positionY - y) - 1 < radius) ||
+          (Math.abs(positionX - x) - 1 < radius && positionY === y);
+
+        // Math.abs(positionX + positionY - (x + y)) < radius &&
+        // Math.abs(x + y - (positionX + positionY)) < radius;
+        /*
+        ||
+          (x + y) - (positionX + positionY) >= radius
+
+
+
           (y === positionY && x === positionX) ||
           (y === positionY && x === positionX - 1) ||
           (y === positionY && x === positionX - 2) ||
@@ -120,12 +131,12 @@ class Map {
           (y + 1 === positionY && x === positionX) ||
           (y - 2 === positionY && x === positionX) ||
           (y + 2 === positionY && x === positionX);
-        */
-        const shouldBeLit =
-          x < positionX + radius &&
-          x > positionX - radius &&
-          y < positionY + radius &&
-          y > positionY - radius;
+          const shouldBeLit =
+       */
+        // x < positionX + radius &&
+        // x > positionX - radius &&
+        // y < positionY + radius &&
+        // y > positionY - radius;
         if (!shouldBeLit) {
           context.fillStyle = 'black';
           context.fillRect(

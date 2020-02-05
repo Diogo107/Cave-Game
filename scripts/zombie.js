@@ -6,6 +6,7 @@ class Zombie {
     this.positionY = 9;
     this.game = game;
     this.movement = 0;
+    this.typeOfMove = 0;
   }
 
   xPosition() {
@@ -72,18 +73,42 @@ class Zombie {
   }
 
   setRandom1() {
-    var movement = Math.floor(Math.random() * 8);
-    if (movement == 0 || movement == 1) {
-      this.moveUp();
-    } else if (movement == 2 || movement == 3) {
-      this.moveDown();
-    } else if (movement == 4 || movement == 5) {
-      this.moveLeft();
-    } else if (movement == 6 || movement == 7) {
-      this.moveRight();
+    if (this.typeOfMove < 3) {
+      this.typeOfMove++;
+      if (this.typeOfMove % 2 == 0) {
+        console.log('Try x');
+        if (this.game.player.positionX - this.positionX < 0) {
+          this.moveLeft();
+        } else {
+          this.moveRight();
+        }
+      } else {
+        console.log('Try y');
+        if (this.game.player.positionY - this.positionY < 0) {
+          this.moveUp();
+        } else {
+          this.moveDown();
+        }
+      }
+    } else if (this.typeOfMove < 6) {
+      console.log('Random try');
+      this.typeOfMove++;
+      var movement = Math.floor(Math.random() * 8);
+      if (movement == 0 || movement == 1) {
+        this.moveUp();
+      } else if (movement == 2 || movement == 3) {
+        this.moveDown();
+      } else if (movement == 4 || movement == 5) {
+        this.moveLeft();
+      } else if (movement == 6 || movement == 7) {
+        this.moveRight();
+      } else {
+        this.setRandom1();
+        console.log('Random');
+      }
     } else {
+      this.typeOfMove = 0;
       this.setRandom1();
-      console.log('Random');
     }
 
     /*switch (movement) {

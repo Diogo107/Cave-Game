@@ -5,8 +5,16 @@ window.addEventListener('load', () => {
   const game = new Game($canvas);
 
   const $btnStart = document.getElementById('start-button');
+  const $btnReset = document.getElementById('reset-button');
+  const $btnPause = document.getElementById('pause-button');
 
   $btnStart.addEventListener('click', () => {
     game.start();
+  });
+  $btnReset.addEventListener('click', () => {
+    game.reset();
+  });
+  $btnPause.addEventListener('click', () => {
+    game.pause();
   });
 });

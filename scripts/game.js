@@ -50,8 +50,8 @@ class Game {
     this.drawEverything();
     this.player.drawPlayer();
     this.map.seeingRadius();
-    this.zombie.positionX = game.zombie.xPosition();
-    this.zombie.positionY = game.zombie.yPosition();
+    this.zombie.positionX = this.zombie.xPosition();
+    this.zombie.positionY = this.zombie.yPosition();
   }
 
   pause() {
@@ -67,7 +67,7 @@ class Game {
     //    console.log('Começou');
     if (this.gameRunning == true) {
       this.zombie.setRandom1();
-      console.log('Move already');
+      //console.log('Move already');
       setTimeout(
         function() {
           if (

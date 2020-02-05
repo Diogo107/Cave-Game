@@ -3,20 +3,55 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>repl.it</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
+    <title>Cave Game</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <h1 class="font">The Cave</h1>
+    <img id="stalactites" src="/projects/Cave-Game/images/Title.jfif" alt="stalactites background">
+    <h1 class="font">The    Cave</h1>
     <div class="game">
+      <div class="Rules">
+        <div id="Title">
+          <h1>Rules:</h1>
+        </div>
+
+        <div>
+          <img src="/projects/Cave-Game/images/Hero/Run_007.png" alt="Hero">
+          <p>This is You</p>
+        </div>
+        <div>
+          <img src="/projects/Cave-Game/images/Objects/ArrowSign.png" alt="Start">
+          <p>Starting Point</p>
+        </div>
+        <div>
+          <img src="/projects/Cave-Game/images/Objects/Exit.png" alt="Exit">
+          <p>Exit</p>
+        </div>
+        <div>
+          <img src="/projects/Cave-Game/images/Zombie/selected.png" alt="Enemy">
+          <p>Enemy</p>
+        </div>
+        <div>
+          <img src="/projects/Cave-Game/images/Objects/Start.png" alt="Start Button">
+          <p>Click to Begin</p>
+        </div>
+        <div>
+          <img src="/projects/Cave-Game/images/Objects/directions.png" alt="Player Directions">
+          <p>Player Directions</p>
+        </div>
+        <div>
+          <img src="/projects/Cave-Game/images/Objects/space_bar.png" alt="Space Bar">
+          <p>Pause || Resume</p>
+        </div>
+      </div>
       <div>
         <canvas width="450" height="450"></canvas>
-        <div class="game">
-          <button class="btn btn-lg btn-primary" id="start-button" onclick="game.start()">Start</button class="btn btn-lg btn-primary">
-          <button class="btn btn-lg btn-primary" id="reset-button" onclick="game.reset()">Reset</button>
-          <button class="btn btn-lg btn-primary" id="pause-button" onclick="game.pause()">Pause</button>
-        </div>
+      </div>
+      <div class="buttons">
+        <button class="btn btn-lg btn-primary" id="start-button">Start</button class="btn btn-lg btn-primary">
+        <button class="btn btn-lg btn-primary" id="reset-button">Reset</button>
+        <button class="btn btn-lg btn-primary" id="pause-button">Pause</button>
       </div>
     </div>
 
