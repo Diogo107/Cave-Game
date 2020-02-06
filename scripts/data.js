@@ -67,5 +67,7 @@ candle.src = './images/Objects/candle.png';
 class Data {
   constructor(game) {
     this.game = game;
+    this.audio = new Audio('./sounds/background-sound.mp3');
+    this.lose = new Audio('./sounds/lose.wav');
   }
 }

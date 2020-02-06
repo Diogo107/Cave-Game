@@ -7,8 +7,8 @@ class Game {
     this.data = new Data(this);
     this.map = new Map(this);
     this.gameSpeed = 1;
-    this.audio = new Audio('./sounds/background-sound.mp3');
-    this.voices = new Audio('./sounds/voices.mp3');
+
+    this.voices = new Audio('./sounds/voices.wav');
     this.scared = new Audio('./sounds/scared.wav');
     this.scenery = new Scenery(this);
     this.controls = new Controls(this);
@@ -16,7 +16,7 @@ class Game {
     this.map.selectTable();
     this.drawEverything();
     this.map.seeingRadius();
-    this.audio.play();
+
     this.zombie.positionX = this.zombie.xPosition();
     this.zombie.positionY = this.zombie.yPosition();
     this.scenery.drawScenery1();
@@ -54,6 +54,7 @@ class Game {
       this.scenery.searchCandleLocation();
       this.loop();
       this.checkColision();
+      this.data.audio.play();
     }
   }
 
@@ -178,6 +179,7 @@ class Game {
             ) {
               this.gameRunning = false;
               console.log('Just ate some brains!');
+              this.data.lose.play();
               this.gameSpeed = 1;
               this.levelValue = 0;
               this.scoreValue = 0;
