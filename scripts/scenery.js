@@ -20,9 +20,7 @@ class Scenery {
     } else {
       this.candleSpot = [this.candleSpot[0], this.candleSpot[1]];
     }
-
     console.log(this.game.map.table[this.candleSpot[0]][this.candleSpot[1]]);
-    // console.log(this.candleSpot[1]);
   }
 
   drawScenery1() {
@@ -37,8 +35,6 @@ class Scenery {
   }
 
   drawCandle(a, b) {
-    // console.log('tried');
-
     this.game.context.drawImage(candle, a * 45, b * 45, 45, 45);
   }
 

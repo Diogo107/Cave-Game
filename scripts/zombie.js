@@ -35,7 +35,6 @@ class Zombie {
     if (this.positionY - 1 < 0) {
     } else if (this.game.map.table[this.positionY - 1][this.positionX] == 'b') {
       this.setRandom1();
-      // console.log('Up');
     } else {
       this.positionY--;
     }
@@ -45,7 +44,6 @@ class Zombie {
     if (this.positionX + 1 > 9) {
     } else if (this.game.map.table[this.positionY][this.positionX + 1] == 'b') {
       this.setRandom1();
-      // console.log('Right');
     } else {
       this.positionX++;
     }
@@ -55,7 +53,6 @@ class Zombie {
     if (this.positionY + 1 > 9) {
     } else if (this.game.map.table[this.positionY + 1][this.positionX] == 'b') {
       this.setRandom1();
-      // console.log('Down');
     } else {
       this.positionY++;
     }
@@ -65,10 +62,8 @@ class Zombie {
     if (this.positionX - 1 < 0) {
     } else if (this.game.map.table[this.positionY][this.positionX - 1] == 'b') {
       this.setRandom1();
-      // console.log('Left');
     } else {
       this.positionX--;
-      console.log(this.positionX + ' ' + this.positionY);
     }
   }
 
@@ -76,14 +71,12 @@ class Zombie {
     if (this.typeOfMove < 3) {
       this.typeOfMove++;
       if (this.typeOfMove % 2 == 0) {
-        // console.log('Try x');
         if (this.game.player.positionX - this.positionX < 0) {
           this.moveLeft();
         } else {
           this.moveRight();
         }
       } else {
-        // console.log('Try y');
         if (this.game.player.positionY - this.positionY < 0) {
           this.moveUp();
         } else {
@@ -91,7 +84,6 @@ class Zombie {
         }
       }
     } else if (this.typeOfMove < 6) {
-      // console.log('Random try');
       this.typeOfMove++;
       var movement = Math.floor(Math.random() * 8);
       if (movement == 0 || movement == 1) {
@@ -104,30 +96,11 @@ class Zombie {
         this.moveRight();
       } else {
         this.setRandom1();
-        // console.log('Random');
       }
     } else {
       this.typeOfMove = 0;
       this.setRandom1();
     }
-
-    /*switch (movement) {
-      case 1 || 2:
-        this.moveUp();
-        break;
-      case 3 || 4:
-        this.moveDown();
-        break;
-      case 5 || 6:
-        this.moveLeft();
-        break;
-      case 7 || 8:
-        this.moveRight();
-        break;
-      default:
-        break;
-    }*/
-    //console.log('Random');
   }
 
   drawZombie() {

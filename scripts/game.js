@@ -44,7 +44,6 @@ class Game {
     this.player.drawPlayer();
     this.zombie.drawZombie();
     this.scenery.drawScenery1();
-    //this.scenery.drawScenery2();
   }
 
   start() {
@@ -90,10 +89,8 @@ class Game {
   }
 
   loop() {
-    //    console.log('Começou');
     if (this.gameRunning === true) {
       this.zombie.setRandom1();
-      //console.log('Move already');
       setTimeout(
         function() {
           if (
@@ -139,6 +136,18 @@ class Game {
   checkColision() {
     if (this.gameRunning === true) {
       if (
+        this.player.positionX === this.scenery.candleSpot[0] &&
+        this.player.positionY === this.scenery.candleSpot[1]
+      ) {
+        this.map.radius = 4;
+        setTimeout(
+          function() {
+            this.map.radius = 2;
+          }.bind(this),
+          2000
+        );
+      }
+      if (
         this.player.positionX === this.zombie.xPosition() &&
         this.player.positionY === this.zombie.yPosition()
       ) {
@@ -181,5 +190,3 @@ class Game {
     }
   }
 }
-
-//Check Colision

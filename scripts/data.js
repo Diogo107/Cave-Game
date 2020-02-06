@@ -64,7 +64,6 @@ begginingArrow.src = './images/Objects/ArrowSign.png';
 const candle = new Image();
 candle.src = './images/Objects/candle.png';
 
-//
 class Data {
   constructor(game) {
     this.game = game;
