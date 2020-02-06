@@ -35,7 +35,7 @@ class Game {
     this.gameSpeed = this.gameSpeed + this.gameSpeed * (this.levelValue / 10);
     console.log(this.gameSpeed);
     level.innerText = this.levelValue;
-    this.gameSpeed.innerText = parseInt(this.gameSpeed, 0);
+    speed.innerText = parseInt(this.gameSpeed, 0);
   }
 
   drawEverything() {
