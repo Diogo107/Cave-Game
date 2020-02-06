@@ -6,9 +6,10 @@
     <title>Cave Game</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" type="image/png" href="/projects/Cave-Game/images/Objects/treasure chest0002.png" />
   </head>
   <body>
-    <img id="stalactites" src="/projects/Cave-Game/images/Title.jfif" alt="stalactites background">
+    <img id="stalactites" src="./images/Title.jfif" alt="stalactites background">
     <h1 class="font">The    Cave</h1>
     <div class="game">
       <div class="Rules">
@@ -45,17 +46,29 @@
           <p>Pause || Resume</p>
         </div>
       </div>
-      <div>
+      <div class="canvas">
         <canvas width="450" height="450"></canvas>
       </div>
       <div class="buttons">
         <div class="Title">
-          <h1 id="score">0</h1>
           <h4>Treasures caught in a row!</h4>
+          <h1 id="score">0</h1>
+          <div >
+            <div class="level-speed">
+
+              <h4>Level:</h4>
+              <h1 id="level">1</h1>
+            </div>
+            <div  class="level-speed">
+
+              <h4>Speed:</h4>
+              <h1 id="speed">1</h1>
+            </div>
+          </div>
         </div>
         <button class="btn btn-lg btn-primary" id="start-button">Start</button class="btn btn-lg btn-primary">
         <button class="btn btn-lg btn-primary" id="reset-button">Reset</button>
-        <button class="btn btn-lg btn-primary" id="pause-button">Pause</button>
+        <!--<button class="btn btn-lg btn-primary" id="pause-button">Pause</button>-->
       </div>
     </div>
 

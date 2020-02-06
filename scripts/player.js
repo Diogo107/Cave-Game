@@ -42,11 +42,8 @@ class Player {
         this.game.map.paintEverything();
         this.game.zombie.drawZombie();
         this.game.map.seeingRadius();
-        //seeingRadius();
       }
     }
-
-    //console.log(this.positionX + ' ' + this.positionY);
   }
   moveLeft() {
     if (this.game.gameRunning == true) {
@@ -57,8 +54,6 @@ class Player {
         this.game.map.paintEverything();
         this.game.zombie.drawZombie();
         this.game.map.seeingRadius();
-
-        //seeingRadius();
       }
     }
   }
@@ -66,11 +61,9 @@ class Player {
   drawPlayer() {
     if (this.movement == 0) {
       this.movement++;
-      const imageUrl = './images/Hero/Run_000.png';
-      const playerImg = new Image();
-      playerImg.src = imageUrl;
+
       this.game.context.drawImage(
-        playerImg,
+        playerImg1,
         this.positionX * 45,
         this.positionY * 45,
         this.playerWidth - 10,
@@ -78,11 +71,8 @@ class Player {
       );
     } else if (this.movement == 1) {
       this.movement++;
-      const imageUrl = './images/Hero/Run_002.png';
-      const playerImg = new Image();
-      playerImg.src = imageUrl;
       this.game.context.drawImage(
-        playerImg,
+        playerImg2,
         this.positionX * 45,
         this.positionY * 45,
         this.playerWidth - 10,
@@ -90,11 +80,44 @@ class Player {
       );
     } else if (this.movement == 2) {
       this.movement++;
-      const imageUrl = './images/Hero/Run_004.png';
-      const playerImg = new Image();
-      playerImg.src = imageUrl;
       this.game.context.drawImage(
-        playerImg,
+        playerImg3,
+        this.positionX * 45,
+        this.positionY * 45,
+        this.playerWidth - 10,
+        this.playerHeight - 10
+      );
+    } else if (this.movement == 3) {
+      this.movement++;
+      this.game.context.drawImage(
+        playerImg4,
+        this.positionX * 45,
+        this.positionY * 45,
+        this.playerWidth - 10,
+        this.playerHeight - 10
+      );
+    } else if (this.movement == 4) {
+      this.movement++;
+      this.game.context.drawImage(
+        playerImg5,
+        this.positionX * 45,
+        this.positionY * 45,
+        this.playerWidth - 10,
+        this.playerHeight - 10
+      );
+    } else if (this.movement == 5) {
+      this.movement++;
+      this.game.context.drawImage(
+        playerImg6,
+        this.positionX * 45,
+        this.positionY * 45,
+        this.playerWidth - 10,
+        this.playerHeight - 10
+      );
+    } else if (this.movement == 6) {
+      this.movement++;
+      this.game.context.drawImage(
+        playerImg7,
         this.positionX * 45,
         this.positionY * 45,
         this.playerWidth - 10,
@@ -102,11 +125,8 @@ class Player {
       );
     } else {
       this.movement = 0;
-      const imageUrl = './images/Hero/Run_006.png';
-      const playerImg = new Image();
-      playerImg.src = imageUrl;
       this.game.context.drawImage(
-        playerImg,
+        playerImg8,
         this.positionX * 45,
         this.positionY * 45,
         this.playerWidth - 10,

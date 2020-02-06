@@ -22,18 +22,20 @@ class Game {
     this.scenery.drawScenery1();
     this.player.drawPlayer();
     this.scoreValue = 0;
+    this.levelValue = 1;
   }
 
   drawLost() {
-    const imageUrl = '/projects/Cave-Game/images/Lost.png';
-    const lostImg = new Image();
-    lostImg.src = imageUrl;
-    this.context.drawImage(lostImg, 75, 150, 300, 300);
+    this.context.drawImage(lostImg, 0, 0, 450, 450);
     console.log('printed');
   }
 
   setScore() {
     score.innerText = this.scoreValue;
+    this.gameSpeed = this.gameSpeed + this.gameSpeed * (this.levelValue / 10);
+    console.log(this.gameSpeed);
+    level.innerText = this.levelValue;
+    this.gameSpeed.innerText = parseInt(this.gameSpeed, 0);
   }
 
   drawEverything() {
@@ -46,27 +48,33 @@ class Game {
   }
 
   start() {
-    if ((this.gameRunning = true)) {
+    if (this.gameRunning === true) {
+    } else {
+      this.gameRunning = true;
+      this.scenery.searchCandleLocation();
+      this.loop();
+      this.checkColision();
     }
-    this.gameRunning = true;
-    this.loop();
-    this.checkColision();
   }
 
   reset() {
-    this.gameRunning = false;
-    this.player.positionX = 0;
-    this.player.positionY = 0;
-    this.zombie.positionX = 9;
-    this.zombie.positionY = 9;
-    this.map.selectTable();
-    this.drawEverything();
-    this.player.drawPlayer();
-    this.map.seeingRadius();
-    this.drawLost();
-    this.zombie.positionX = this.zombie.xPosition();
-    this.zombie.positionY = this.zombie.yPosition();
-    this.setScore();
+    console.log('test');
+    if (this.gameRunning !== false) {
+      this.gameRunning = false;
+    } else {
+      this.player.positionX = 0;
+      this.player.positionY = 0;
+      this.zombie.positionX = 9;
+      this.zombie.positionY = 9;
+      this.map.selectTable();
+      this.drawEverything();
+      this.player.drawPlayer();
+      this.map.seeingRadius();
+      this.drawLost();
+      this.zombie.positionX = this.zombie.xPosition();
+      this.zombie.positionY = this.zombie.yPosition();
+      this.setScore();
+    }
   }
 
   pause() {
@@ -139,6 +147,10 @@ class Game {
         this.player.drawPlayer();
         this.zombie.drawZombie();
         this.scoreValue++;
+        console.log(this.scoreValue);
+        console.log(this.scoreValue / 2);
+        console.log(parseInt((this.scoreValue + 1) / 2, 0));
+        this.levelValue = parseInt((this.scoreValue + 1) / 2, 0);
         this.gameRunning = false;
         this.setScore();
       } else {
@@ -148,14 +160,17 @@ class Game {
             this.scenery.drawScenery1();
             this.player.drawPlayer();
             this.zombie.drawZombie();
+            this.scenery.drawCandle(this.scenery.candleSpot[0], this.scenery.candleSpot[1]);
             this.map.seeingRadius();
             if (
               this.player.positionX === this.zombie.positionX &&
               this.player.positionY === this.zombie.positionY
             ) {
-              this.scoreValue = 0;
               this.gameRunning = false;
               console.log('Just ate some brains!');
+              this.gameSpeed = 1;
+              this.levelValue = 0;
+              this.scoreValue = 0;
               this.reset();
             } else {
               this.checkColision();

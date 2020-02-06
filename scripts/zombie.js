@@ -35,7 +35,7 @@ class Zombie {
     if (this.positionY - 1 < 0) {
     } else if (this.game.map.table[this.positionY - 1][this.positionX] == 'b') {
       this.setRandom1();
-      console.log('Up');
+      // console.log('Up');
     } else {
       this.positionY--;
     }
@@ -45,7 +45,7 @@ class Zombie {
     if (this.positionX + 1 > 9) {
     } else if (this.game.map.table[this.positionY][this.positionX + 1] == 'b') {
       this.setRandom1();
-      console.log('Right');
+      // console.log('Right');
     } else {
       this.positionX++;
     }
@@ -55,7 +55,7 @@ class Zombie {
     if (this.positionY + 1 > 9) {
     } else if (this.game.map.table[this.positionY + 1][this.positionX] == 'b') {
       this.setRandom1();
-      console.log('Down');
+      // console.log('Down');
     } else {
       this.positionY++;
     }
@@ -65,7 +65,7 @@ class Zombie {
     if (this.positionX - 1 < 0) {
     } else if (this.game.map.table[this.positionY][this.positionX - 1] == 'b') {
       this.setRandom1();
-      console.log('Left');
+      // console.log('Left');
     } else {
       this.positionX--;
       console.log(this.positionX + ' ' + this.positionY);
@@ -76,14 +76,14 @@ class Zombie {
     if (this.typeOfMove < 3) {
       this.typeOfMove++;
       if (this.typeOfMove % 2 == 0) {
-        console.log('Try x');
+        // console.log('Try x');
         if (this.game.player.positionX - this.positionX < 0) {
           this.moveLeft();
         } else {
           this.moveRight();
         }
       } else {
-        console.log('Try y');
+        // console.log('Try y');
         if (this.game.player.positionY - this.positionY < 0) {
           this.moveUp();
         } else {
@@ -91,7 +91,7 @@ class Zombie {
         }
       }
     } else if (this.typeOfMove < 6) {
-      console.log('Random try');
+      // console.log('Random try');
       this.typeOfMove++;
       var movement = Math.floor(Math.random() * 8);
       if (movement == 0 || movement == 1) {
@@ -104,7 +104,7 @@ class Zombie {
         this.moveRight();
       } else {
         this.setRandom1();
-        console.log('Random');
+        // console.log('Random');
       }
     } else {
       this.typeOfMove = 0;
@@ -133,11 +133,8 @@ class Zombie {
   drawZombie() {
     if (this.movement == 0) {
       this.movement++;
-      const imageUrl = './images/Zombie/0_Reaper_Man_Walking_001.png';
-      const zombieImg = new Image();
-      zombieImg.src = imageUrl;
       this.game.context.drawImage(
-        zombieImg,
+        zombieImg1,
         this.positionX * 45,
         this.positionY * 45,
         this.zombieWidth,
@@ -145,11 +142,8 @@ class Zombie {
       );
     } else if (this.movement == 1) {
       this.movement++;
-      const imageUrl = './images/Zombie/0_Reaper_Man_Walking_004.png';
-      const zombieImg = new Image();
-      zombieImg.src = imageUrl;
       this.game.context.drawImage(
-        zombieImg,
+        zombieImg2,
         this.positionX * 45,
         this.positionY * 45,
         this.zombieWidth,
@@ -157,11 +151,62 @@ class Zombie {
       );
     } else if (this.movement == 2) {
       this.movement++;
-      const imageUrl = './images/Zombie/0_Reaper_Man_Walking_022.png';
-      const zombieImg = new Image();
-      zombieImg.src = imageUrl;
       this.game.context.drawImage(
-        zombieImg,
+        zombieImg3,
+        this.positionX * 45,
+        this.positionY * 45,
+        this.zombieWidth,
+        this.zombieHeight
+      );
+    } else if (this.movement == 3) {
+      this.movement++;
+      this.game.context.drawImage(
+        zombieImg4,
+        this.positionX * 45,
+        this.positionY * 45,
+        this.zombieWidth,
+        this.zombieHeight
+      );
+    } else if (this.movement == 4) {
+      this.movement++;
+      this.game.context.drawImage(
+        zombieImg5,
+        this.positionX * 45,
+        this.positionY * 45,
+        this.zombieWidth,
+        this.zombieHeight
+      );
+    } else if (this.movement == 5) {
+      this.movement++;
+      this.game.context.drawImage(
+        zombieImg6,
+        this.positionX * 45,
+        this.positionY * 45,
+        this.zombieWidth,
+        this.zombieHeight
+      );
+    } else if (this.movement == 6) {
+      this.movement++;
+      this.game.context.drawImage(
+        zombieImg7,
+        this.positionX * 45,
+        this.positionY * 45,
+        this.zombieWidth,
+        this.zombieHeight
+      );
+    } else if (this.movement == 7) {
+      this.movement++;
+      this.game.context.drawImage(
+        zombieImg8,
+        this.positionX * 45,
+        this.positionY * 45,
+        this.zombieWidth,
+        this.zombieHeight
+      );
+    } else if (this.movement == 8) {
+      this.movement++;
+      this.game.context.drawImage(
+        zombieImg9,
         this.positionX * 45,
         this.positionY * 45,
         this.zombieWidth,
@@ -169,11 +214,8 @@ class Zombie {
       );
     } else {
       this.movement = 0;
-      const imageUrl = './images/Zombie/0_Reaper_Man_Walking_019.png';
-      const zombieImg = new Image();
-      zombieImg.src = imageUrl;
       this.game.context.drawImage(
-        zombieImg,
+        zombieImg10,
         this.positionX * 45,
         this.positionY * 45,
         this.zombieWidth,
