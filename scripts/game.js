@@ -187,7 +187,8 @@ class Game {
             } else {
               this.checkColision();
             }
-          }.bind(this)
+          }.bind(this),
+          30
         );
       }
     }

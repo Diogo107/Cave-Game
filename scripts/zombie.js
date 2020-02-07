@@ -68,7 +68,7 @@ class Zombie {
   }
 
   setRandom1() {
-    if (this.typeOfMove < 3) {
+    if (this.typeOfMove < 5) {
       this.typeOfMove++;
       if (this.typeOfMove % 2 == 0) {
         if (this.game.player.positionX - this.positionX < 0) {
@@ -83,7 +83,7 @@ class Zombie {
           this.moveDown();
         }
       }
-    } else if (this.typeOfMove < 6) {
+    } else if (this.typeOfMove < 10) {
       this.typeOfMove++;
       var movement = Math.floor(Math.random() * 8);
       if (movement == 0 || movement == 1) {
